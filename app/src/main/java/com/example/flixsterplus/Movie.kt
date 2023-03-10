@@ -14,5 +14,9 @@ class Movie {
     @JvmField
     @SerializedName("overview")
     var description: String? = null
+
+    init{
+        posterImageURL = "https://image.tmdb.org/t/p/w500/" + posterImageURL
+    }
 }
 

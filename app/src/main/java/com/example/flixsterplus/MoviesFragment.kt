@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.widget.ContentLoadingProgressBar
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,14 +14,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.codepath.asynchttpclient.AsyncHttpClient
 import com.codepath.asynchttpclient.RequestParams
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import okhttp3.Headers
+import org.json.JSONObject
 
 
 /*
  * The class for the only fragment in the app, which contains the
  * recyclerView, and performs the network calls to The Movie Database API.
  */
-class MoviesFragment: Fragment(){
+class MoviesFragment: Fragment(), OnListFragmentInteractionListener {
 
     /*
      * Constructing the view
@@ -70,12 +74,28 @@ class MoviesFragment: Fragment(){
 
                     override fun onSuccess(statusCode: Int, headers: Headers?, json: JSON?) {
                         progressBar.hide()
-                        Log.e("sucess", json.toString())
+
+                        //get json data and convert to String
+                        val moviesRawJSON = json?.jsonObject?.get("results").toString()
+                        Log.e("success", moviesRawJSON)
+
+                        // convert json data to Movie objects, then create an adapter based on the Movie List
+                        val gson = Gson()
+                        val arrayMovieType = object: TypeToken<List<Movie>>(){}.type
+                        val movies: List<Movie> = gson.fromJson(moviesRawJSON, arrayMovieType)
+                        recyclerView.adapter = MoviesRecylerViewAdapter(movies, this@MoviesFragment)
                     }
 
                 }
             ]
 
+    }
+
+    /*
+     * What happens when a particular movie is clicked.
+     */
+    override fun onItemClick(movie: Movie) {
+        Toast.makeText(context, "test: " + movie.title, Toast.LENGTH_LONG).show()
     }
 
 }
