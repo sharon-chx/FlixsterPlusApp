@@ -1,6 +1,5 @@
 package com.example.flixsterplus
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -17,8 +16,11 @@ import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import okhttp3.Headers
-import org.json.JSONObject
 
+// --------------------------------//
+// CHANGE THIS TO BE YOUR API KEY  //
+// --------------------------------//
+private const val API_KEY = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
 
 /*
  * The class for the only fragment in the app, which contains the
@@ -56,9 +58,10 @@ class MoviesFragment: Fragment(), OnListFragmentInteractionListener {
         // Create and set up an AsyncHTTPClient() and RequestParams here
         val client = AsyncHttpClient()
         val params = RequestParams()
+        params["api-key"] = API_KEY
 
         // Using the client, perform the HTTP request
-        client["https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed",
+        client["https://api.themoviedb.org/3/movie/now_playing?api_key=" + API_KEY,
                 params,
                 object: JsonHttpResponseHandler(){
                     override fun onFailure(

@@ -1,6 +1,5 @@
 package com.example.flixsterplus
 
-import android.util.Log
 import com.google.gson.annotations.SerializedName
 
 class Movie {

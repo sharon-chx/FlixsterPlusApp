@@ -1,7 +1,5 @@
 package com.example.flixsterplus
 
-
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -51,7 +49,6 @@ class MoviesRecylerViewAdapter(
         // Load image from url
         Glide.with(holder.itemView)
             .load(movie.posterImageURL)
-            .override(200, 250)
             .placeholder(R.drawable.loading)
             .error(R.drawable.image_not_available)
             .centerInside()
