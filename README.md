@@ -41,7 +41,11 @@ GIF created with ScreenToGif
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+1. Learned from TA: Landscape view needs to be implemented with another xml file.
+2. Use Glide to load image.
+3. Read JSON data and create data object based on it
+4. New app layout: use FrameLayout and created RecylerView inside of FrameLayout
+5. Use Fragment for multi-thread process in app.
 
 ## License
 
