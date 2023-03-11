@@ -4,7 +4,7 @@ Submitted by: **Sharon Chen**
 
 **FlixsterPlus** is a movie browsing app that allows users to browse movies currently playing in theaters.
 
-Time spent: **6.5** hours spent in total
+Time spent: **7** hours spent in total
 
 ## Required Features
 
