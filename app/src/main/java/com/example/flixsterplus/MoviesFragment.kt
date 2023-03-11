@@ -77,7 +77,7 @@ class MoviesFragment: Fragment(), OnListFragmentInteractionListener {
 
                         //get json data and convert to String
                         val moviesRawJSON = json?.jsonObject?.get("results").toString()
-                        Log.e("success", moviesRawJSON)
+
 
                         // convert json data to Movie objects, then create an adapter based on the Movie List
                         val gson = Gson()

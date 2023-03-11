@@ -1,6 +1,7 @@
 package com.example.flixsterplus
 
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -46,10 +47,12 @@ class MoviesRecylerViewAdapter(
         // Set item views based on your views and data model
         holder.descrTv.text = movie.description
         holder.titleTv.text = movie.title
+        movie.posterImageURL = "https://image.tmdb.org/t/p/w500/" + movie.posterImageURL
         // Load image from url
         Glide.with(holder.itemView)
             .load(movie.posterImageURL)
-            .placeholder(R.drawable.image_not_available)
+            .override(200, 250)
+            .placeholder(R.drawable.loading)
             .error(R.drawable.image_not_available)
             .centerInside()
             .into(holder.posterIv)

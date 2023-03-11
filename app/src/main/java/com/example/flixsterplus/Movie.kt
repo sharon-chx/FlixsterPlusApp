@@ -1,5 +1,6 @@
 package com.example.flixsterplus
 
+import android.util.Log
 import com.google.gson.annotations.SerializedName
 
 class Movie {
@@ -15,8 +16,5 @@ class Movie {
     @SerializedName("overview")
     var description: String? = null
 
-    init{
-        posterImageURL = "https://image.tmdb.org/t/p/w500/" + posterImageURL
-    }
 }
 
