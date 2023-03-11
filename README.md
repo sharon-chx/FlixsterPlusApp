@@ -21,6 +21,7 @@ The following **optional** features are implemented:
   - App should neatly arrange data in both landscape and portrait mode
 - [x] Implement Glide to display placeholder graphics during loading
   - Note: this feature is difficult to capture in a GIF without throttling internet speeds.  Instead, include an additional screencap of your Glide code implementing the feature.  (<10 lines of code)
+  ![image](https://user-images.githubusercontent.com/69126372/224512798-a60c965e-877d-4b5b-8405-b2537ec56ad8.png)
 
 The following **additional** features are implemented:
 
@@ -30,10 +31,10 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://user-images.githubusercontent.com/69126372/224512694-25355e82-caae-4099-8664-a37beeccb4d8.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 <!-- Replace this with whatever GIF tool you used! -->
-GIF created with ScreenToGif 
+GIF created with AZ Screen Recorder (on Android phone) and ScreenToGif to screen recording and convert to gif
 <!-- Recommended tools:
 [Kap](https://getkap.co/) for macOS
 [ScreenToGif](https://www.screentogif.com/) for Windows
@@ -41,7 +42,11 @@ GIF created with ScreenToGif
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+1. Learned from TA: Landscape view needs to be implemented with another xml file.
+2. Use Glide to load image.
+3. Read JSON data and create data object based on it
+4. New app layout: use FrameLayout and created RecylerView inside of FrameLayout
+5. Use Fragment for multi-thread process in app.
 
 ## License
 
