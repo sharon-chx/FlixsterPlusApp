@@ -30,7 +30,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='https://user-images.githubusercontent.com/69126372/224512018-5882116c-edc5-47e4-8246-65f7246f4706.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://user-images.githubusercontent.com/69126372/224512694-25355e82-caae-4099-8664-a37beeccb4d8.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 <!-- Replace this with whatever GIF tool you used! -->
 GIF created with AZ Screen Recorder (on Android phone) and ScreenToGif to screen recording and convert to gif
