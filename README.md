@@ -33,7 +33,7 @@ Here's a walkthrough of implemented user stories:
 <img src='https://user-images.githubusercontent.com/69126372/224512018-5882116c-edc5-47e4-8246-65f7246f4706.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 <!-- Replace this with whatever GIF tool you used! -->
-GIF created with ScreenToGif 
+GIF created with AZ Screen Recorder (on Android phone) and ScreenToGif to screen recording and convert to gif
 <!-- Recommended tools:
 [Kap](https://getkap.co/) for macOS
 [ScreenToGif](https://www.screentogif.com/) for Windows
