@@ -1,5 +1,6 @@
 package com.example.flixsterplus
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,8 +26,6 @@ class MoviesRecylerViewAdapter(
     inner class ViewHolder(val itemView: View): RecyclerView.ViewHolder(itemView){
         val posterIv = itemView.findViewById<ImageView>(R.id.posterIV)
         val titleTv = itemView.findViewById<TextView>(R.id.titleTV)
-        val descrTv = itemView.findViewById<TextView>(R.id.descriptionTV)
-
     }
 
     // create the layout of the page
@@ -43,9 +42,9 @@ class MoviesRecylerViewAdapter(
         // Get the data model based on position
         val movie :Movie = movies.get(position)
         // Set item views based on your views and data model
-        holder.descrTv.text = movie.description
         holder.titleTv.text = movie.title
         movie.posterImageURL = "https://image.tmdb.org/t/p/w500/" + movie.posterImageURL
+        Log.e("image", movie.posterImageURL!!)
         // Load image from url
         Glide.with(holder.itemView)
             .load(movie.posterImageURL)

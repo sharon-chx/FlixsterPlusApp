@@ -1,19 +1,36 @@
 package com.example.flixsterplus
 
-import com.google.gson.annotations.SerializedName
+import android.support.annotation.Keep
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
-class Movie {
-    @JvmField
-    @SerializedName("poster_path")
-    var posterImageURL: String? = null
 
-    @JvmField
-    @SerializedName("title")
-    var title: String? = null
+@Keep
+@Serializable
+data class Result(
+    @SerialName("results")
+    var results: List<Movie>?
+)
 
-    @JvmField
-    @SerializedName("overview")
-    var description: String? = null
 
-}
+@Keep
+@Serializable
+data class Movie (
+
+    @SerialName("poster_path")
+    var posterImageURL: String? = null,
+
+    @SerialName("title")
+    var title: String? = null,
+
+    @SerialName("overview")
+    var description: String? = null,
+
+    @SerialName("release_date")
+    var releaseDate: String? = null,
+)
+
+
+
+
 

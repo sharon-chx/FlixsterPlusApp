@@ -13,8 +13,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.codepath.asynchttpclient.AsyncHttpClient
 import com.codepath.asynchttpclient.RequestParams
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
+import com.example.flixsterplus.Result
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonNull.serializer
 import okhttp3.Headers
 
 // --------------------------------//
@@ -40,9 +42,12 @@ class MoviesFragment: Fragment(), OnListFragmentInteractionListener {
         val view = inflater.inflate(R.layout.movie_fragment_list, container, false)
         val progressBar = view.findViewById<ContentLoadingProgressBar>(R.id.progress)
         val recyclerView = view.findViewById<RecyclerView>(R.id.moviesRV)
+
         // Set layout manager to position the movies
         val context = view.context
-        recyclerView.layoutManager = LinearLayoutManager(context)
+        val layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        recyclerView.layoutManager = layoutManager
+
         updateAdapter(progressBar, recyclerView)
         return view
     }
@@ -61,7 +66,7 @@ class MoviesFragment: Fragment(), OnListFragmentInteractionListener {
         params["api-key"] = API_KEY
 
         // Using the client, perform the HTTP request
-        client["https://api.themoviedb.org/3/movie/now_playing?api_key=" + API_KEY,
+        client["https://api.themoviedb.org/3/tv/popular?api_key=" + API_KEY,
                 params,
                 object: JsonHttpResponseHandler(){
                     override fun onFailure(
@@ -78,14 +83,16 @@ class MoviesFragment: Fragment(), OnListFragmentInteractionListener {
                     override fun onSuccess(statusCode: Int, headers: Headers?, json: JSON?) {
                         progressBar.hide()
 
-                        //get json data and convert to String
-                        val moviesRawJSON = json?.jsonObject?.get("results").toString()
+                        val movies: MutableList<Movie> = mutableListOf()
 
+                        val parsedJson = Json{ignoreUnknownKeys = true}.decodeFromString<Result>(
+                            json?.jsonObject.toString()
+                        )
 
-                        // convert json data to Movie objects, then create an adapter based on the Movie List
-                        val gson = Gson()
-                        val arrayMovieType = object: TypeToken<List<Movie>>(){}.type
-                        val movies: List<Movie> = gson.fromJson(moviesRawJSON, arrayMovieType)
+                        parsedJson.results?.let { list ->
+                            movies.addAll(list)
+                        }
+
                         recyclerView.adapter = MoviesRecylerViewAdapter(movies, this@MoviesFragment)
                     }
 
