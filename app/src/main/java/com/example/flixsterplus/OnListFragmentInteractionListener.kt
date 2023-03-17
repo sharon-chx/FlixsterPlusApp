@@ -1,5 +1,7 @@
 package com.example.flixsterplus
 
+import android.view.View
+
 /**
  * This interface is used by the [MoviesRecyclerViewAdapter] to ensure
  * it has an appropriate Listener.
@@ -7,5 +9,5 @@ package com.example.flixsterplus
  * In this app, it's implemented by [MoviesFragment]
  */
 interface OnListFragmentInteractionListener {
-    fun onItemClick(item: Movie)
+    fun onItemClick(position: Int)
 }

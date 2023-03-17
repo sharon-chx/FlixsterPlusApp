@@ -1,5 +1,6 @@
 package com.example.flixsterplus
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -16,17 +17,21 @@ import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import okhttp3.Headers
+import java.text.FieldPosition
 
 // --------------------------------//
 // CHANGE THIS TO BE YOUR API KEY  //
 // --------------------------------//
 private const val API_KEY = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
 
+
 /*
  * The class for the only fragment in the app, which contains the
  * recyclerView, and performs the network calls to The Movie Database API.
  */
-class MoviesFragment: Fragment(), OnListFragmentInteractionListener {
+class TvsFragment: Fragment(), OnListFragmentInteractionListener {
+
+    private lateinit var tvs: List<TV>
 
     /*
      * Constructing the view
@@ -61,7 +66,7 @@ class MoviesFragment: Fragment(), OnListFragmentInteractionListener {
         params["api-key"] = API_KEY
 
         // Using the client, perform the HTTP request
-        client["https://api.themoviedb.org/3/movie/now_playing?api_key=" + API_KEY,
+        client["https://api.themoviedb.org/3/tv/popular?api_key=" + API_KEY,
                 params,
                 object: JsonHttpResponseHandler(){
                     override fun onFailure(
@@ -84,9 +89,9 @@ class MoviesFragment: Fragment(), OnListFragmentInteractionListener {
 
                         // convert json data to Movie objects, then create an adapter based on the Movie List
                         val gson = Gson()
-                        val arrayMovieType = object: TypeToken<List<Movie>>(){}.type
-                        val movies: List<Movie> = gson.fromJson(moviesRawJSON, arrayMovieType)
-                        recyclerView.adapter = MoviesRecylerViewAdapter(movies, this@MoviesFragment)
+                        val arrayTvType = object: TypeToken<List<TV>>(){}.type
+                        tvs = gson.fromJson(moviesRawJSON, arrayTvType)
+                        recyclerView.adapter = TvsRecylerViewAdapter(tvs, this@TvsFragment)
                     }
 
                 }
@@ -94,11 +99,18 @@ class MoviesFragment: Fragment(), OnListFragmentInteractionListener {
 
     }
 
+
     /*
-     * What happens when a particular movie is clicked.
+    * Send the app to detail screen when item is clicked
      */
-    override fun onItemClick(movie: Movie) {
-        Toast.makeText(context, "test: " + movie.title, Toast.LENGTH_LONG).show()
+    override fun onItemClick(position: Int) {
+        val tv = tvs[position]
+        Toast.makeText(context, "test: " + tv.title, Toast.LENGTH_LONG).show()
+        //  Navigate to Details screen and pass selected tv show
+        //val intent = Intent(context, TvDetail::class.java)
+        //intent.putExtra(TV_EXTRA, tv)
     }
 
+
 }
+
