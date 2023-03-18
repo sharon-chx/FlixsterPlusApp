@@ -44,11 +44,11 @@ GIF created with ...
 Describe any challenges encountered while building the app.
 
 1. How to use Serialization library is somewhat different from the lab. Took some time to debug and figure it out.
-2. Implement shared elements transition is another challenge that I'm working on.
+2. Bugs occured when implementing shared elements transition: had error in Pair type, and incorrectly used MainActivity instead of just using this.activity
 
 ## License
 
-    Copyright [yyyy] [name of copyright owner]
+    Copyright [2023] [Sharon Chen]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
