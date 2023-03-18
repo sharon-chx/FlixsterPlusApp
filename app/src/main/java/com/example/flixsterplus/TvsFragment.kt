@@ -1,12 +1,12 @@
 package com.example.flixsterplus
 
+import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.widget.ContentLoadingProgressBar
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,7 +17,7 @@ import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import okhttp3.Headers
-import java.text.FieldPosition
+
 
 // --------------------------------//
 // CHANGE THIS TO BE YOUR API KEY  //
@@ -83,6 +83,8 @@ class TvsFragment: Fragment(), OnListFragmentInteractionListener {
                     override fun onSuccess(statusCode: Int, headers: Headers?, json: JSON?) {
                         progressBar.hide()
 
+                        //Log.e("data", json?.jsonObject?.get("results").toString())
+
                         //get json data and convert to String
                         val moviesRawJSON = json?.jsonObject?.get("results").toString()
 
@@ -91,7 +93,9 @@ class TvsFragment: Fragment(), OnListFragmentInteractionListener {
                         val gson = Gson()
                         val arrayTvType = object: TypeToken<List<TV>>(){}.type
                         tvs = gson.fromJson(moviesRawJSON, arrayTvType)
-                        recyclerView.adapter = TvsRecylerViewAdapter(tvs, this@TvsFragment)
+
+
+                        recyclerView.adapter = TvsRecyclerViewAdapter(tvs, this@TvsFragment)
                     }
 
                 }
@@ -105,10 +109,17 @@ class TvsFragment: Fragment(), OnListFragmentInteractionListener {
      */
     override fun onItemClick(position: Int) {
         val tv = tvs[position]
-        Toast.makeText(context, "test: " + tv.title, Toast.LENGTH_LONG).show()
+
+        //Log.e("rating check 1:", tv.rating.toString())
+
         //  Navigate to Details screen and pass selected tv show
-        //val intent = Intent(context, TvDetail::class.java)
-        //intent.putExtra(TV_EXTRA, tv)
+        val intent = Intent(context, TvDetail::class.java)
+        intent.putExtra(TV_EXTRA, tv)
+        val p1 = android.util.Pair(view?.findViewById(R.id.posterIV) as View, "poster")
+        val p2 = android.util.Pair(view?.findViewById(R.id.titleTV) as View, "title")
+        val p3 = android.util.Pair(view?.findViewById(R.id.descriptionTV) as View, "overview")
+        val options = ActivityOptions.makeSceneTransitionAnimation(this.activity, p1, p2, p3)
+        context?.startActivity(intent, options.toBundle())
     }
 
 

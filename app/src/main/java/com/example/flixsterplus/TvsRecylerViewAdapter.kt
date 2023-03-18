@@ -14,18 +14,18 @@ const val TV_EXTRA = "TV_EXTRA"
  * [RecyclerView.Adapter] that can display a [Movies] and makes a call to the
  * specified [OnListFragmentInteractionListener].
  */
-class TvsRecylerViewAdapter(
+class TvsRecyclerViewAdapter(
     private val tvs: List<TV>,
     private val mListener: OnListFragmentInteractionListener?
     )
-    : RecyclerView.Adapter<TvsRecylerViewAdapter.ViewHolder>()
+    : RecyclerView.Adapter<TvsRecyclerViewAdapter.ViewHolder>()
     {
 
     /**
      * This inner class lets us refer to all the different View elements
      * (Yes, the same ones as in the XML layout files!)
      */
-    inner class ViewHolder(val itemView: View): RecyclerView.ViewHolder(itemView){
+    inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val posterIv = itemView.findViewById<ImageView>(R.id.posterIV)
         val titleTv = itemView.findViewById<TextView>(R.id.titleTV)
         val descrTv = itemView.findViewById<TextView>(R.id.descriptionTV)
