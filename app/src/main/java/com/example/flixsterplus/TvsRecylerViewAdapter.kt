@@ -28,15 +28,13 @@ class TvsRecyclerViewAdapter(
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val posterIv = itemView.findViewById<ImageView>(R.id.posterIV)
         val titleTv = itemView.findViewById<TextView>(R.id.titleTV)
-        val descrTv = itemView.findViewById<TextView>(R.id.descriptionTV)
-
     }
 
     // create the layout of the page
     // Usually involves inflating a layout from XML and returning the holder
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.movie_segment, parent, false)
+            .inflate(R.layout.segment, parent, false)
         // Return a new holder instance
         return ViewHolder(view)
     }
@@ -46,7 +44,6 @@ class TvsRecyclerViewAdapter(
         // Get the data model based on position
         val tv :TV = tvs.get(position)
         // Set item views based on your views and data model
-        holder.descrTv.text = tv.overview
         holder.titleTv.text = tv.title
         tv.posterImageURL = "https://image.tmdb.org/t/p/w500/" + tv.posterImageURL
         // Load image from url

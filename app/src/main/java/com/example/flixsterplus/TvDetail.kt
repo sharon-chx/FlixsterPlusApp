@@ -12,7 +12,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 class TvDetail : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_tv_detail)
+        setContentView(R.layout.activity_detail)
 
         val tvPosterIV = findViewById<ImageView>(R.id.tvPosterIV)
         val tvTitleTv = findViewById<TextView>(R.id.tvTitleTv)

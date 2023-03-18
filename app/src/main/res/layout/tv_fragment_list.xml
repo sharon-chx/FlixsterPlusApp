@@ -6,13 +6,13 @@
     android:layout_height="match_parent">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/moviesRV"
+        android:id="@+id/tvsRV"
         android:name="com.flixsterplus.MoviesFragment"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
         app:layoutManager="LinearLayoutManager"
         tools:context=".MoviesFragment"
-        tools:listitem="@layout/movie_segment" />
+        tools:listitem="@layout/segment" />
     />
 
     <androidx.core.widget.ContentLoadingProgressBar

@@ -42,12 +42,15 @@ class TvsFragment: Fragment(), OnListFragmentInteractionListener {
         savedInstanceState: Bundle?
     ): View? {
         // Lookup the recyclerview in movie_fragment_list layout
-        val view = inflater.inflate(R.layout.movie_fragment_list, container, false)
+        val view = inflater.inflate(R.layout.tv_fragment_list, container, false)
         val progressBar = view.findViewById<ContentLoadingProgressBar>(R.id.progress)
-        val recyclerView = view.findViewById<RecyclerView>(R.id.moviesRV)
+        val recyclerView = view.findViewById<RecyclerView>(R.id.tvsRV)
         // Set layout manager to position the movies
         val context = view.context
-        recyclerView.layoutManager = LinearLayoutManager(context)
+        // Set horizontal layout
+        val layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        recyclerView.layoutManager = layoutManager
+
         updateAdapter(progressBar, recyclerView)
         return view
     }
@@ -117,8 +120,7 @@ class TvsFragment: Fragment(), OnListFragmentInteractionListener {
         intent.putExtra(TV_EXTRA, tv)
         val p1 = android.util.Pair(view?.findViewById(R.id.posterIV) as View, "poster")
         val p2 = android.util.Pair(view?.findViewById(R.id.titleTV) as View, "title")
-        val p3 = android.util.Pair(view?.findViewById(R.id.descriptionTV) as View, "overview")
-        val options = ActivityOptions.makeSceneTransitionAnimation(this.activity, p1, p2, p3)
+        val options = ActivityOptions.makeSceneTransitionAnimation(this.activity, p1, p2)
         context?.startActivity(intent, options.toBundle())
     }
 
