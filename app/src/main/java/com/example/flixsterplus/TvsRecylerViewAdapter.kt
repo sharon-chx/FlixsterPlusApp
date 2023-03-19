@@ -60,7 +60,6 @@ class TvsRecyclerViewAdapter(
         // set up onClickListener
         holder.itemView.setOnClickListener{
             mListener?.onTVItemClick(position)
-            mListener?.onMovieItemClick(position)
         }
     }
 

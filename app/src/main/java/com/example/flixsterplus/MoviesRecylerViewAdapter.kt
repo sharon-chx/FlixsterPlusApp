@@ -60,7 +60,6 @@ class MoviesRecyclerViewAdapter(
         // set up onClickListener
         holder.itemView.setOnClickListener{
             mListener?.onMovieItemClick(position)
-            mListener?.onTVItemClick(position)
         }
     }
 

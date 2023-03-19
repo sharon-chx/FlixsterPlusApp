@@ -4,21 +4,21 @@ Submitted by: **Sharon Chen**
 
 **Flixster+** is a movie browsing app that allows users to browse popular TV shows and movies
 
-Time spent: **7** hours spent in total
+Time spent: **14** hours spent in total for required and optional features
 
 ## Required Features
 
 The following **required** functionality is completed:
 
 - [x] **Choose any endpoint on The MovieDB API except `now_playing`**
-  - Chosen Endpoint: `/tv/popular`
+  - Chosen Endpoint: `/tv/popular and /movie/popular`
 - [x] **Make a request to your chosen endpoint and implement a RecyclerView to display all entries**
 - [x] **Use Glide to load and display at least one image per entry**
 - [x] **Click on an entry to view specific details about that entry using Intents**
 
 The following **optional** features are implemented:
 
-- [ ] **Add another API call and RecyclerView that lets the user interact with different data.**
+- [x] **Add another API call and RecyclerView that lets the user interact with different data.**
 - [x] **Add rounded corners to the images using the Glide transformations**
 - [x] **Implement a shared element transition when user clicks into the details of a movie**
 
@@ -45,6 +45,7 @@ Describe any challenges encountered while building the app.
 
 1. How to use Serialization library is somewhat different from the lab. Took some time to debug and figure it out.
 2. Bugs occured when implementing shared elements transition: had error in Pair type, and incorrectly used MainActivity instead of just using this.activity
+3. Adding another API call required separate recylerview and adapter, but can have only one fragment. But still have bugs that title of movies not showing and headers not moving when scroll up
 
 ## License
 

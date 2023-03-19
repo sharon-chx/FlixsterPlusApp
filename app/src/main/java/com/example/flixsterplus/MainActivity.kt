@@ -18,5 +18,6 @@ class MainActivity : AppCompatActivity() {
         val supportFragmentManager = supportFragmentManager
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.replace(id.mainActivity, DataFragment(), null).commit()
+
     }
 }
