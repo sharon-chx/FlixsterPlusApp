@@ -45,7 +45,7 @@ Describe any challenges encountered while building the app.
 
 1. How to use Serialization library is somewhat different from the lab. Took some time to debug and figure it out.
 2. Bugs occured when implementing shared elements transition: had error in Pair type, and incorrectly used MainActivity instead of just using this.activity
-3. Adding another API call required separate recylerview and adapter, but can have only one fragment. But still have bugs that title of movies not showing and headers not moving when scroll up
+3. Adding another API call required separate recylerview and adapter, but can have only one fragment. But still have bug that headers not moving when scrolling up
 
 ## License
 

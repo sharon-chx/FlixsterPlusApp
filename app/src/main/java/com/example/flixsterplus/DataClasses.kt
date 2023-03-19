@@ -32,7 +32,7 @@ data class Movie (
     @SerializedName("poster_path")
     var posterImageURL: String? = null,
 
-    @SerializedName("name")
+    @SerializedName("title")
     var title: String? = null,
 
     @SerializedName("overview")
