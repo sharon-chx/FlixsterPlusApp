@@ -26,3 +26,21 @@ data class TV (
 ): java.io.Serializable
 
 
+@Keep
+@Serializable
+data class Movie (
+    @SerializedName("poster_path")
+    var posterImageURL: String? = null,
+
+    @SerializedName("name")
+    var title: String? = null,
+
+    @SerializedName("overview")
+    var overview: String? = null,
+
+    @SerializedName("vote_average")
+    var rating: Float? = null,
+
+    @SerializedName("release_date")
+    var releaseDate: String? = null
+): java.io.Serializable

@@ -16,7 +16,14 @@
         android:theme="@style/Theme.FlixsterPlus"
         tools:targetApi="31">
         <activity
-            android:name=".TvDetail"
+            android:name=".movieDetial"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".tvDetail"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

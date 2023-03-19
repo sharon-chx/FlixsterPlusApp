@@ -9,10 +9,10 @@ import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 
-class TvDetail : AppCompatActivity() {
+class tvDetail : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_detail)
+        setContentView(R.layout.activity_tv_detail)
 
         val tvPosterIV = findViewById<ImageView>(R.id.tvPosterIV)
         val tvTitleTv = findViewById<TextView>(R.id.tvTitleTv)
@@ -38,7 +38,7 @@ class TvDetail : AppCompatActivity() {
         countryTV.text = "Origin country: " + tv.country?.joinToString(", ")
 
         popularityRB.rating = (tv.rating!!/2.0).toFloat()
-        Log.e("rating", popularityRB.rating.toString())
+        //Log.e("rating", popularityRB.rating.toString())
 
 
     }

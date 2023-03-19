@@ -7,7 +7,7 @@ import com.example.flixsterplus.R.id
 
 /**
  * The MainActivity for the FlixsterPlus app.
- * Launches a [MoviesFragment].
+ * Launches a [Fragment].
  */
 class MainActivity : AppCompatActivity() {
 
@@ -17,7 +17,6 @@ class MainActivity : AppCompatActivity() {
 
         val supportFragmentManager = supportFragmentManager
         val fragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.replace(id.tvContent, TvsFragment(), null).commit()
-
+        fragmentTransaction.replace(id.mainActivity, DataFragment(), null).commit()
     }
 }

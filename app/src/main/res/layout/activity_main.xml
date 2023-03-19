@@ -4,44 +4,73 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/mainActivity"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/movieSection"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="10dp"
-        android:text="Popular TV Shows"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:fontFamily="@font/homemade_sausage"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <FrameLayout
-        android:id="@+id/tvContent"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:layout_marginTop="10dp"
+        android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/movieSection">
+        app:layout_constraintTop_toTopOf="parent">
 
-    </FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tvSection"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/homemade_sausage"
-        android:text="Popular Movies"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvContent" />
+            <TextView
+                android:id="@+id/tvSection"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/homemade_sausage"
+                android:text="Popular TV Shows"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/tvsRV"
+                android:name="com.flixsterplus.TVsFragment"
+                android:layout_width="wrap_content"
+                android:layout_height="240dp"
+                android:layout_marginBottom="10dp"
+                app:layoutManager="LinearLayoutManager"
+                android:orientation="horizontal"
+                tools:context=".TVsFragment"
+                tools:listitem="@layout/segment"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvSection"/>
 
+            <TextView
+                android:id="@+id/movieSection"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/homemade_sausage"
+                android:text="Popular Movies"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvsRV" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/moviesRV"
+                android:name="com.flixsterplus.MoviesFragment"
+                android:layout_width="wrap_content"
+                android:layout_height="240dp"
+                android:layout_marginBottom="10dp"
+                app:layoutManager="LinearLayoutManager"
+                android:orientation="horizontal"
+                tools:context=".MoviesFragment"
+                tools:listitem="@layout/segment"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/movieSection"/>
+
+        </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

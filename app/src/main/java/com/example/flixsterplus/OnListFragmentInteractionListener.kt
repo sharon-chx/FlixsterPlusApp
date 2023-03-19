@@ -9,5 +9,6 @@ import android.view.View
  * In this app, it's implemented by [MoviesFragment]
  */
 interface OnListFragmentInteractionListener {
-    fun onItemClick(position: Int)
+    fun onTVItemClick(position: Int)
+    fun onMovieItemClick(position: Int)
 }

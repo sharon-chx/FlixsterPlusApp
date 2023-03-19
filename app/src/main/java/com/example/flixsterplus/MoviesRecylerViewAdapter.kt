@@ -9,17 +9,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 
-const val TV_EXTRA = "TV_EXTRA"
+const val MOVIE_EXTRA = "MOVIE_EXTRA"
 
 /**
  * [RecyclerView.Adapter] that can display a [Movies] and makes a call to the
  * specified [OnListFragmentInteractionListener].
  */
-class TvsRecyclerViewAdapter(
-    private val tvs: List<TV>,
+class MoviesRecyclerViewAdapter(
+    private val movies: List<Movie>,
     private val mListener: OnListFragmentInteractionListener?
     )
-    : RecyclerView.Adapter<TvsRecyclerViewAdapter.ViewHolder>()
+    : RecyclerView.Adapter<MoviesRecyclerViewAdapter.ViewHolder>()
     {
 
     /**
@@ -43,14 +43,14 @@ class TvsRecyclerViewAdapter(
     // Populate data into the item through the holder
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         // Get the data model based on position
-        val tv :TV = tvs.get(position)
+        val movie :Movie = movies.get(position)
         // Set item views based on your views and data model
-        holder.titleTv.text = tv.title
-        tv.posterImageURL = "https://image.tmdb.org/t/p/w500/" + tv.posterImageURL
+        holder.titleTv.text = movie.title
+        movie.posterImageURL = "https://image.tmdb.org/t/p/w500/" + movie.posterImageURL
         // Load image from url
         val radius = 30  // corner radius, higher value = more rounded
         Glide.with(holder.itemView)
-            .load(tv.posterImageURL)
+            .load(movie.posterImageURL)
             .placeholder(R.drawable.loading)
             .error(R.drawable.image_not_available)
             .centerCrop()
@@ -59,12 +59,12 @@ class TvsRecyclerViewAdapter(
 
         // set up onClickListener
         holder.itemView.setOnClickListener{
-            mListener?.onTVItemClick(position)
             mListener?.onMovieItemClick(position)
+            mListener?.onTVItemClick(position)
         }
     }
 
     override fun getItemCount(): Int {
-        return tvs.size
+        return movies.size
     }
 }
